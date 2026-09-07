@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale | ЗЕРНООЧИСТИТЕЛЬНЫЕ КОМПЛЕКСЫ</title>
+    <title>ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale | ЗЕРНООЧИСТИТЕЛЬНЫЕ КОМПЛЕКСЫ ЗАВ </title>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -355,22 +355,7 @@
         }
 
         body.lang-ru [lang="ru"] {
-            display: block !important;
-        }
-
-        body.lang-ru inline[lang="ru"],
-        body.lang-ru span[lang="ru"],
-        body.lang-ru a[lang="ru"],
-        body.lang-ru th[lang="ru"],
-        body.lang-ru td[lang="ru"],
-        body.lang-ru strong[lang="ru"],
-        body.lang-ru label[lang="ru"],
-        body.lang-ru option[lang="ru"] {
-            display: inline-block !important;
-        }
-        
-        body.lang-ru td[lang="ru"] {
-            display: table-cell !important;
+            display: revert !important;
         }
         
         body.lang-ru th[lang="ru"] {
@@ -489,8 +474,8 @@
             </nav>
             <div style="display: flex; align-items: center; gap: 1rem;">
                 <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="setLanguage('ro')">RO</button>
-                    <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+                    <button class="lang-btn active" onclick="setLanguage('ro', event)">RO</button>
+                    <button class="lang-btn" onclick="setLanguage('ru', event)">RU</button>
                 </div>
                 <a href="#contact" class="btn">
                     <span lang="ro">Cere Ofertă</span>
@@ -741,17 +726,17 @@
                 </p>
 
                 <div style="margin-bottom: 1rem;">
-                    <strong>📍 <span lang="ro">Adresă:</span><span lang="ru">Адрес:</span></strong> Str. Industriei Nr. 10, România
+                    <strong>📍 <span lang="ro">Adresă:</span><span lang="ru">Адрес:</span></strong>                     or. Edinet, Republica Moldova
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <strong>📞 <span lang="ro">Telefon:</span><span lang="ru">Телефон:</span></strong> +40 7xx xxx xxx
+                    <strong>📞 <span lang="ro">Telefon:</span><span lang="ru">Телефон:</span></strong> +37369115783
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <strong>✉️ Email:</strong> contact@zicom-teh.ro
+                    <strong>✉️ Email:</strong> <a href="mailto:zicomtehsrl@gmail.com">zicomtehsrl@gmail.com</a>
                 </div>
             </div>
 
-            <form onsubmit="event.preventDefault(); alert(currentLang === 'ro' ? 'Solicitarea a fost trimisă cu succes!' : 'Заявка успешно отправлена!');">
+            <form onsubmit="submitOffer(event);">
                 <div class="form-group">
                     <label lang="ro" for="name">Nume și Prenume</label>
                     <label lang="ru" for="name">Имя и Фамилия</label>
@@ -803,20 +788,43 @@
 
     <script>
         let currentLang = 'ro';
+        const pageTitles = {
+            ro: 'ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale',
+            ru: 'ZICOM-TEH SRL - Зерноочистительные Комплексы'
+        };
 
-        function setLanguage(lang) {
+        function setLanguage(lang, languageEvent) {
             currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.documentElement.lang = lang;
+            document.title = pageTitles[lang];
+            languageEvent.currentTarget.classList.add('active');
             
             if (lang === 'ru') {
                 document.body.classList.add('lang-ru');
                 document.body.classList.remove('lang-ro');
-                event.target.classList.add('active');
             } else {
                 document.body.classList.add('lang-ro');
                 document.body.classList.remove('lang-ru');
-                event.target.classList.add('active');
             }
+        }
+
+        function submitOffer(formEvent) {
+            formEvent.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const model = document.getElementById('model').selectedOptions[0].text;
+            const message = document.getElementById('message').value.trim();
+            const subject = currentLang === 'ro'
+                ? 'Solicitare ofertă ZAV'
+                : 'Запрос коммерческого предложения ZAV';
+            const body = currentLang === 'ro'
+                ? `Nume și Prenume: ${name}\nCompanie / Fermă: ${company || '-'}\nTelefon / Email: ${phone}\nModel de interes: ${model}\nMesaj: ${message || '-'}`
+                : `Имя и Фамилия: ${name}\nКомпания / Хозяйство: ${company || '-'}\nТелефон / Email: ${phone}\nИнтересующая модель: ${model}\nСообщение: ${message || '-'}`;
+
+            window.location.href = `mailto:zicomtehsrl@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
         function openLightbox(item) {
