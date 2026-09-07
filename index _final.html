@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale | ЗЕРНООЧИСТИТЕЛЬНЫЕ КОМПЛЕКСЫ</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #1e293b;
+            --accent: #d97706;
+            --accent-hover: #b45309;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --text-heading: #0f172a;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header / Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-heading);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.3rem;
+            background: #f1f5f9;
+            padding: 0.3rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 0.3rem 0.6rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline:hover {
+            background-color: #ffffff;
+            color: var(--primary-dark);
+        }
+
+        /* Section Commons */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Models Table Section */
+        .models-table-container {
+            overflow-x: auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Advantages Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        /* Workflow Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            background: #ffffff;
+            padding: 1.8rem;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-item h4 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+        }
+
+        /* Contact & Form Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            padding: 3rem 2rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Language visibility utility */
+        [lang="ru"] {
+            display: none;
+        }
+
+        body.lang-ru [lang="ro"] {
+            display: none !important;
+        }
+
+        body.lang-ru [lang="ru"] {
+            display: block !important;
+        }
+
+        body.lang-ru inline[lang="ru"],
+        body.lang-ru span[lang="ru"],
+        body.lang-ru a[lang="ru"],
+        body.lang-ru th[lang="ru"],
+        body.lang-ru td[lang="ru"],
+        body.lang-ru strong[lang="ru"],
+        body.lang-ru label[lang="ru"],
+        body.lang-ru option[lang="ru"] {
+            display: inline-block !important;
+        }
+        
+        body.lang-ru td[lang="ru"] {
+            display: table-cell !important;
+        }
+        
+        body.lang-ru th[lang="ru"] {
+            display: table-cell !important;
+        }
+
+        /* Galerie Foto */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            aspect-ratio: 3 / 4;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            color: #ffffff;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="lang-ro">
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">ZICOM<span>-TEH</span></a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#modele" lang="ro">Modele</a>
+                        <a href="#modele" lang="ru">Модели</a>
+                    </li>
+                    <li>
+                        <a href="#avantaje" lang="ro">Avantaje</a>
+                        <a href="#avantaje" lang="ru">Преимущества</a>
+                    </li>
+                    <li>
+                        <a href="#flux" lang="ro">Flux Tehnologic</a>
+                        <a href="#flux" lang="ru">Техпроцесс</a>
+                    </li>
+                    <li>
+                        <a href="#galerie" lang="ro">Galerie</a>
+                        <a href="#galerie" lang="ru">Галерея</a>
+                    </li>
+                    <li>
+                        <a href="#contact" lang="ro">Contact</a>
+                        <a href="#contact" lang="ru">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="setLanguage('ro')">RO</button>
+                    <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+                </div>
+                <a href="#contact" class="btn">
+                    <span lang="ro">Cere Ofertă</span>
+                    <span lang="ru">Запросить Цену</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 lang="ro">Complexe Industriale de Curățare și Calibrare Cereale ЗАВ</h1>
+            <h1 lang="ru">Зерноочистительные Комплексы ЗАВ-25, ЗАВ-50, ЗАВ-100</h1>
+            
+            <p lang="ro">Performanță înaltă, eficiență energetică și puritate maximă pentru recolta ta cu liniile ZAV-25, ZAV-50 și ZAV-100 de la ZICOM-TEH SRL.</p>
+            <p lang="ru">Высокая производительность, энергоэффективность и максимальная чистота зерна от компании ZICOM-TEH SRL.</p>
+            
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">
+                    <span lang="ro">Solicită Ofertă de Preț</span>
+                    <span lang="ru">Получить Коммерческое Предложение</span>
+                </a>
+                <a href="#modele" class="btn btn-outline">
+                    <span lang="ro">Vezi Modelele</span>
+                    <span lang="ru">Посмотреть Модели</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modele (Table Section) -->
+    <section id="modele">
+        <h2 class="section-title">
+            <span lang="ro">Gama de Modele ZAV</span>
+            <span lang="ru">Модельный Ряд ЗАВ</span>
+        </h2>
+        <p class="section-subtitle">
+            <span lang="ro">Alege configurația potrivită în funcție de volumul și cerințele fermei tale.</span>
+            <span lang="ru">Выберите подходящую комплектацию в зависимости от объемов и задач вашего хозяйства.</span>
+        </p>
+        
+        <div class="models-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th lang="ro">Specificație</th>
+                        <th lang="ru">Характеристика</th>
+                        <th>ZAV-25 / ЗАВ-25</th>
+                        <th>ZAV-50 / ЗАВ-50</th>
+                        <th>ZAV-100 / ЗАВ-100</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td lang="ro"><strong>Capacitate de procesare</strong></td>
+                        <td lang="ru"><strong>Производительность</strong></td>
+                        <td lang="ro">25 tone / oră</td>
+                        <td lang="ru" style="display:none;">25 тонн / час</td>
+                        <td lang="ro">50 tone / oră</td>
+                        <td lang="ru" style="display:none;">50 тонн / час</td>
+                        <td lang="ro">100 tone / oră</td>
+                        <td lang="ru" style="display:none;">100 тонн / час</td>
+                    </tr>
+                    <tr>
+                        <td lang="ro"><strong>Destinație principală</strong></td>
+                        <td lang="ru"><strong>Основное назначение</strong></td>
+                        <td lang="ro">Ferme medii</td>
+                        <td lang="ru" style="display:none;">Средние хозяйства</td>
+                        <td lang="ro">Ferme mari și depozite</td>
+                        <td lang="ru" style="display:none;">Крупные хозяйства и склады</td>
+                        <td lang="ro">Terminale cerealiere & Silozuri</td>
+                        <td lang="ru" style="display:none;">Элеваторы и зерновые терминалы</td>
+                    </tr>
+                    <tr>
+                        <td lang="ro"><strong>Consum energetic</strong></td>
+                        <td lang="ru"><strong>Энергопотребление</strong></td>
+                        <td lang="ro">Optimizat (Redus)</td>
+                        <td lang="ru" style="display:none;">Оптимизированное (Низкое)</td>
+                        <td lang="ro">Mediu</td>
+                        <td lang="ru" style="display:none;">Среднее</td>
+                        <td lang="ro">Industrial</td>
+                        <td lang="ru" style="display:none;">Промышленное</td>
+                    </tr>
+                    <tr>
+                        <td lang="ro"><strong>Separare impurități</strong></td>
+                        <td lang="ru"><strong>Очистка от примесей</strong></td>
+                        <td lang="ro">3 trepte</td>
+                        <td lang="ru" style="display:none;">3 этапа</td>
+                        <td lang="ro">3 trepte</td>
+                        <td lang="ru" style="display:none;">3 этапа</td>
+                        <td lang="ro">Multi-etapă de mare viteză</td>
+                        <td lang="ru" style="display:none;">Многоэтапная скоростная</td>
+                    </tr>
+                    <tr>
+                        <td lang="ro"><strong>Configurare spațiu</strong></td>
+                        <td lang="ru"><strong>Конфигурация</strong></td>
+                        <td lang="ro">Amprentă redusă</td>
+                        <td lang="ru" style="display:none;">Компактная</td>
+                        <td lang="ro">Modulară</td>
+                        <td lang="ru" style="display:none;">Модульная</td>
+                        <td lang="ro">Modulară / Personalizată</td>
+                        <td lang="ru" style="display:none;">Модульная / Индивидуальная</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Avantaje (Grid Section) -->
+    <section id="avantaje" style="background-color: #f1f5f9; border-radius: 12px;">
+        <h2 class="section-title">
+            <span lang="ro">Avantaje Tehnologice</span>
+            <span lang="ru">Технологические Преимущества</span>
+        </h2>
+        <p class="section-subtitle">
+            <span lang="ro">De ce să alegi echipamentele ZAV de la ZICOM-TEH SRL?</span>
+            <span lang="ru">Почему выбирают комплексы ЗАВ от компании ZICOM-TEH SRL?</span>
+        </p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 lang="ro">Eficiență de până la 99%</h3>
+                <h3 lang="ru">Эффективность до 99%</h3>
+                <p lang="ro">Sistem integrat de separare aeriană (aspirare praf/pleavă) și separare mecanică prin ciururi/site de înaltă precizie.</p>
+                <p lang="ru">Интегрированная система аспирации (удаление пыли и шелухи) и механическая сепарация на высокоточных решетах.</p>
+            </div>
+            <div class="card">
+                <h3 lang="ro">Calibrare Precisă</h3>
+                <h3 lang="ru">Точная Калибровка</h3>
+                <p lang="ro">Selecție uniformă a semințelor pentru obținerea unui material semincer de calitate superioară și valoare adăugată.</p>
+                <p lang="ru">Равномерный отбор зерен для получения высококачественного посевного материала и повышения рыночной стоимости.</p>
+            </div>
+            <div class="card">
+                <h3 lang="ro">Construcție Robustă</h3>
+                <h3 lang="ru">Надежная Конструкция</h3>
+                <p lang="ro">Structură din oțel tratat anticoroziv, rezistentă la uzură intensă și condiții meteo nefavorabile.</p>
+                <p lang="ru">Прочный стальной каркас с антикоррозийным покрытием, устойчивый к высоким нагрузкам и погодным условиям.</p>
+            </div>
+            <div class="card">
+                <h3 lang="ro">Automatizare Completă</h3>
+                <h3 lang="ru">Полная Автоматизация</h3>
+                <p lang="ro">Panou de comandă intuitiv care permite controlul fluxului de cereale și ajustarea parametrilor în timp real.</p>
+                <p lang="ru">Интуитивная панель управления для регулировки потока зерна и настройки параметров в режиме реального времени.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flux Tehnologic -->
+    <section id="flux">
+        <h2 class="section-title">
+            <span lang="ro">Fluxul Tehnologic</span>
+            <span lang="ru">Технологический Process</span>
+        </h2>
+        <p class="section-subtitle">
+            <span lang="ro">Cum funcționează procesul de curățare și sortare într-un complex ZAV.</span>
+            <span lang="ru">Принцип работы зерноочистительного комплекса ЗАВ.</span>
+        </p>
+
+        <div class="steps">
+            <div class="step-item">
+                <h4 lang="ro">1. Recepție & Alimentare</h4>
+                <h4 lang="ru">1. Прием и Подача</h4>
+                <p lang="ro">Cerealele sunt preluate din buncărul de primire de către elevatoare cu cupe rezistente.</p>
+                <p lang="ru">Зерно из завальной ямы подается нориями в очистительное отделение.</p>
+            </div>
+            <div class="step-item">
+                <h4 lang="ro">2. Pre-curățare & Aspirare</h4>
+                <h4 lang="ru">2. Предварительная Очистка</h4>
+                <p lang="ro">Separatorul de aer elimină eficient praful, pleava și resturile ușoare înaintea sitelor.</p>
+                <p lang="ru">Воздушный сепаратор эффективно удаляет пыль, легкие примеси и шелуху.</p>
+            </div>
+            <div class="step-item">
+                <h4 lang="ro">3. Curățare & Calibrare</h4>
+                <h4 lang="ru">3. Очистка и Калибровка</h4>
+                <p lang="ro">Trecerea prin ciururi vibratorii pentru îndepărtarea corpurilor străine și sortarea pe dimensiuni.</p>
+                <p lang="ru">Решетный стан разделяет зерно по фракциям и удаляет крупные/мелкие примеси.</p>
+            </div>
+            <div class="step-item">
+                <h4 lang="ro">4. Stocare / Evacuare</h4>
+                <h4 lang="ru">4. Выгрузка и Хранение</h4>
+                <p lang="ro">Cerealele curate sunt direcționate către buncărele de stocare sau linia de încărcare.</p>
+                <p lang="ru">Очищенное зерно направляется в бункеры временного хранения или на автоотгрузку.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Foto ZAV-25 -->
+    <section id="galerie" style="background-color: #f1f5f9; border-radius: 12px;">
+        <h2 class="section-title">
+            <span lang="ro">Galerie Foto</span>
+            <span lang="ru">Фотогалерея</span>
+        </h2>
+        <p class="section-subtitle">
+            <span lang="ro">Complexe ZAV instalate și puse în funcțiune la clienții noștri.</span>
+            <span lang="ru">Комплексы ЗАВ, установленные и запущенные у наших клиентов.</span>
+        </p>
+
+        <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">ZAV-25 / ЗАВ-25</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-25/zav25-1.jpeg" alt="Complex ZAV-25 finalizat, cu buncăr de descărcare și remorcă" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-25/zav25-2.jpeg" alt="Complex ZAV-25 în etapa de montaj final" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-25/zav25-3.jpeg" alt="Structura metalică și buncărul complexului ZAV-25" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-25/zav25-4.jpeg" alt="Buncăr de recepție cu capac rabatabil la complexul ZAV-25" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-25/zav25-5.jpeg" alt="Montajul complexului ZAV-25 pe fundație" loading="lazy">
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 3rem 0 1.5rem; color: var(--primary);">ZAV-50 / ЗАВ-50</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-1.jpeg" alt="Complex ZAV-50 cu uscător de cereale și buncăr de recepție" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-2.jpeg" alt="Complex ZAV-50 cu elevator și conducte de evacuare" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-3.jpeg" alt="Complex ZAV-50 cu buncăre duble de stocare" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-4.jpeg" alt="Structura metalică și buncărele complexului ZAV-50" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-5.jpeg" alt="Complex ZAV-50 vedere laterală cu scară de acces" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/zav-50/zav50-6.jpeg" alt="Complex ZAV-50 în etapa de montaj" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" aria-label="Închide">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Contact & Form Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div>
+                <h2 lang="ro">Solicită o Ofertă Personalizată</h2>
+                <h2 lang="ru">Запросите Коммерческое Предложение</h2>
+                
+                <p lang="ro" style="margin-top: 1rem; margin-bottom: 2rem; color: #64748b;">
+                    Completați formularul alăturat, iar un specialist ZICOM-TEH SRL vă va contacta în cel mai scurt timp pentru un deviz detaliat.
+                </p>
+                <p lang="ru" style="margin-top: 1rem; margin-bottom: 2rem; color: #64748b;">
+                    Заполните форму, и специалист ZICOM-TEH SRL свяжется с вами для расчета стоимости и консультации.
+                </p>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong>📍 <span lang="ro">Adresă:</span><span lang="ru">Адрес:</span></strong> Str. Industriei Nr. 10, România
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong>📞 <span lang="ro">Telefon:</span><span lang="ru">Телефон:</span></strong> +40 7xx xxx xxx
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong>✉️ Email:</strong> contact@zicom-teh.ro
+                </div>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert(currentLang === 'ro' ? 'Solicitarea a fost trimisă cu succes!' : 'Заявка успешно отправлена!');">
+                <div class="form-group">
+                    <label lang="ro" for="name">Nume și Prenume</label>
+                    <label lang="ru" for="name">Имя и Фамилия</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label lang="ro" for="company">Nume Companie / Fermă</label>
+                    <label lang="ru" for="company">Название Компании / Хозяйства</label>
+                    <input type="text" id="company">
+                </div>
+                <div class="form-group">
+                    <label lang="ro" for="phone">Telefon / Email</label>
+                    <label lang="ru" for="phone">Телефон / Email</label>
+                    <input type="text" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label lang="ro" for="model">Model de Interes</label>
+                    <label lang="ru" for="model">Интересующая Модель</label>
+                    <select id="model">
+                        <option value="zav-25">ZAV-25 / ЗАВ-25 (25t/h)</option>
+                        <option value="zav-50">ZAV-50 / ЗАВ-50 (50t/h)</option>
+                        <option value="zav-100">ZAV-100 / ЗАВ-100 (100t/h)</option>
+                        <option value="undecided" lang="ro">Nu sunt sigur / Am nevoie de consultanță</option>
+                        <option value="undecided" lang="ru">Нужна консультация специалиста</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label lang="ro" for="message">Mesaj / Cerințe Specifice</label>
+                    <label lang="ru" for="message">Сообщение / Дополнительные Требования</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">
+                    <span lang="ro">Trimite Solicitarea</span>
+                    <span lang="ru">Отправить Заявку</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="color: #ffffff;">ZICOM<span>-TEH</span></div>
+            <p>&copy; 2026 ZICOM-TEH SRL. <span lang="ro">Toate drepturile rezervate.</span><span lang="ru">Все права защищены.</span></p>
+        </div>
+        <p style="font-size: 0.85rem;" lang="ro">Echipamente profesionale pentru curățat și calibrat cereale.</p>
+        <p style="font-size: 0.85rem;" lang="ru">Профессиональное оборудование для очистки и калибровки зерна.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ro';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            
+            if (lang === 'ru') {
+                document.body.classList.add('lang-ru');
+                document.body.classList.remove('lang-ro');
+                event.target.classList.add('active');
+            } else {
+                document.body.classList.add('lang-ro');
+                document.body.classList.remove('lang-ru');
+                event.target.classList.add('active');
+            }
+        }
+
+        function openLightbox(item) {
+            const img = item.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox-img').alt = img.alt;
+            document.getElementById('lightbox').classList.add('open');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
