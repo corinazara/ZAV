@@ -126,14 +126,42 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(15, 23, 42, 0.9)), 
-                        url('WhatsApp%20Image%202026-08-04%20at%2016.00.05.jpeg') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
             color: #ffffff;
             padding: 5rem 2rem;
             text-align: center;
         }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('WhatsApp%20Image%202026-08-04%20at%2016.00.05.jpeg') center/cover no-repeat;
+            animation: heroKenBurns 18s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.55), rgba(15, 23, 42, 0.45));
+            z-index: 1;
+        }
+
+        @keyframes heroKenBurns {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.15) translate(-2.5%, -1.5%);
+            }
+        }
+
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -142,12 +170,14 @@
             font-size: 2.6rem;
             margin-bottom: 1.2rem;
             line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.45);
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.4);
         }
 
         .hero-buttons {
@@ -357,10 +387,6 @@
         body.lang-ru [lang="ru"] {
             display: revert !important;
         }
-        
-        body.lang-ru th[lang="ru"] {
-            display: table-cell !important;
-        }
 
         /* Galerie Foto */
         .gallery-grid {
@@ -522,8 +548,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th lang="ro">Specificație</th>
-                        <th lang="ru">Характеристика</th>
+                        <th><span lang="ro">Specificație</span><span lang="ru">Характеристика</span></th>
                         <th>ZAV-25 / ЗАВ-25</th>
                         <th>ZAV-50 / ЗАВ-50</th>
                         <th>ZAV-100 / ЗАВ-100</th>
@@ -531,54 +556,34 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td lang="ro"><strong>Capacitate de procesare</strong></td>
-                        <td lang="ru"><strong>Производительность</strong></td>
-                        <td lang="ro">25 tone / oră</td>
-                        <td lang="ru" style="display:none;">25 тонн / час</td>
-                        <td lang="ro">50 tone / oră</td>
-                        <td lang="ru" style="display:none;">50 тонн / час</td>
-                        <td lang="ro">100 tone / oră</td>
-                        <td lang="ru" style="display:none;">100 тонн / час</td>
+                        <td><strong><span lang="ro">Capacitate de procesare</span><span lang="ru">Производительность</span></strong></td>
+                        <td><span lang="ro">25 tone / oră</span><span lang="ru">25 тонн / час</span></td>
+                        <td><span lang="ro">50 tone / oră</span><span lang="ru">50 тонн / час</span></td>
+                        <td><span lang="ro">100 tone / oră</span><span lang="ru">100 тонн / час</span></td>
                     </tr>
                     <tr>
-                        <td lang="ro"><strong>Destinație principală</strong></td>
-                        <td lang="ru"><strong>Основное назначение</strong></td>
-                        <td lang="ro">Ferme medii</td>
-                        <td lang="ru" style="display:none;">Средние хозяйства</td>
-                        <td lang="ro">Ferme mari și depozite</td>
-                        <td lang="ru" style="display:none;">Крупные хозяйства и склады</td>
-                        <td lang="ro">Terminale cerealiere & Silozuri</td>
-                        <td lang="ru" style="display:none;">Элеваторы и зерновые терминалы</td>
+                        <td><strong><span lang="ro">Destinație principală</span><span lang="ru">Основное назначение</span></strong></td>
+                        <td><span lang="ro">Ferme medii</span><span lang="ru">Средние хозяйства</span></td>
+                        <td><span lang="ro">Ferme mari și depozite</span><span lang="ru">Крупные хозяйства и склады</span></td>
+                        <td><span lang="ro">Terminale cerealiere &amp; Silozuri</span><span lang="ru">Элеваторы и зерновые терминалы</span></td>
                     </tr>
                     <tr>
-                        <td lang="ro"><strong>Consum energetic</strong></td>
-                        <td lang="ru"><strong>Энергопотребление</strong></td>
-                        <td lang="ro">Optimizat (Redus)</td>
-                        <td lang="ru" style="display:none;">Оптимизированное (Низкое)</td>
-                        <td lang="ro">Mediu</td>
-                        <td lang="ru" style="display:none;">Среднее</td>
-                        <td lang="ro">Industrial</td>
-                        <td lang="ru" style="display:none;">Промышленное</td>
+                        <td><strong><span lang="ro">Consum energetic</span><span lang="ru">Энергопотребление</span></strong></td>
+                        <td><span lang="ro">Optimizat (Redus)</span><span lang="ru">Оптимизированное (Низкое)</span></td>
+                        <td><span lang="ro">Mediu</span><span lang="ru">Среднее</span></td>
+                        <td><span lang="ro">Industrial</span><span lang="ru">Промышленное</span></td>
                     </tr>
                     <tr>
-                        <td lang="ro"><strong>Separare impurități</strong></td>
-                        <td lang="ru"><strong>Очистка от примесей</strong></td>
-                        <td lang="ro">3 trepte</td>
-                        <td lang="ru" style="display:none;">3 этапа</td>
-                        <td lang="ro">3 trepte</td>
-                        <td lang="ru" style="display:none;">3 этапа</td>
-                        <td lang="ro">Multi-etapă de mare viteză</td>
-                        <td lang="ru" style="display:none;">Многоэтапная скоростная</td>
+                        <td><strong><span lang="ro">Separare impurități</span><span lang="ru">Очистка от примесей</span></strong></td>
+                        <td><span lang="ro">3 trepte</span><span lang="ru">3 этапа</span></td>
+                        <td><span lang="ro">3 trepte</span><span lang="ru">3 этапа</span></td>
+                        <td><span lang="ro">Multi-etapă de mare viteză</span><span lang="ru">Многоэтапная скоростная</span></td>
                     </tr>
                     <tr>
-                        <td lang="ro"><strong>Configurare spațiu</strong></td>
-                        <td lang="ru"><strong>Конфигурация</strong></td>
-                        <td lang="ro">Amprentă redusă</td>
-                        <td lang="ru" style="display:none;">Компактная</td>
-                        <td lang="ro">Modulară</td>
-                        <td lang="ru" style="display:none;">Модульная</td>
-                        <td lang="ro">Modulară / Personalizată</td>
-                        <td lang="ru" style="display:none;">Модульная / Индивидуальная</td>
+                        <td><strong><span lang="ro">Configurare spațiu</span><span lang="ru">Конфигурация</span></strong></td>
+                        <td><span lang="ro">Amprentă redusă</span><span lang="ru">Компактная</span></td>
+                        <td><span lang="ro">Modulară</span><span lang="ru">Модульная</span></td>
+                        <td><span lang="ro">Modulară / Personalizată</span><span lang="ru">Модульная / Индивидуальная</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -637,19 +642,19 @@
 
         <div class="steps">
             <div class="step-item">
-                <h4 lang="ro">1. Recepție & Alimentare</h4>
+                <h4 lang="ro">1. Recepție &amp; Alimentare</h4>
                 <h4 lang="ru">1. Прием и Подача</h4>
                 <p lang="ro">Cerealele sunt preluate din buncărul de primire de către elevatoare cu cupe rezistente.</p>
                 <p lang="ru">Зерно из завальной ямы подается нориями в очистительное отделение.</p>
             </div>
             <div class="step-item">
-                <h4 lang="ro">2. Pre-curățare & Aspirare</h4>
+                <h4 lang="ro">2. Pre-curățare &amp; Aspirare</h4>
                 <h4 lang="ru">2. Предварительная Очистка</h4>
                 <p lang="ro">Separatorul de aer elimină eficient praful, pleava și resturile ușoare înaintea sitelor.</p>
                 <p lang="ru">Воздушный сепаратор эффективно удаляет пыль, легкие примеси и шелуху.</p>
             </div>
             <div class="step-item">
-                <h4 lang="ro">3. Curățare & Calibrare</h4>
+                <h4 lang="ro">3. Curățare &amp; Calibrare</h4>
                 <h4 lang="ru">3. Очистка и Калибровка</h4>
                 <p lang="ro">Trecerea prin ciururi vibratorii pentru îndepărtarea corpurilor străine și sortarea pe dimensiuni.</p>
                 <p lang="ru">Решетный стан разделяет зерно по фракциям и удаляет крупные/мелкие примеси.</p>
