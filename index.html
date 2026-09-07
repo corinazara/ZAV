@@ -376,7 +376,10 @@
         }
 
         /* Language visibility utility */
-        [lang="ru"] {
+        /* Scoped to body descendants so this never matches <html lang="ru">
+           (previously the bare [lang="ru"] selector hid the whole page
+           because the JS also sets document.documentElement.lang = 'ru') */
+        body [lang="ru"] {
             display: none;
         }
 
@@ -633,7 +636,7 @@
     <section id="flux">
         <h2 class="section-title">
             <span lang="ro">Fluxul Tehnologic</span>
-            <span lang="ru">Технологический Process</span>
+            <span lang="ru">Технологический процесс</span>
         </h2>
         <p class="section-subtitle">
             <span lang="ro">Cum funcționează procesul de curățare și sortare într-un complex ZAV.</span>
