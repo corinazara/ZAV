@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale | ЗЕРНООЧИСТИТЕЛЬНЫЕ КОМПЛЕКСЫ ЗАВ </title>
+    <title>ZICOM-TEH SRL - Complexe Industriale de Curățare și Calibrare Cereale</title>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -474,8 +474,8 @@
             </nav>
             <div style="display: flex; align-items: center; gap: 1rem;">
                 <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="setLanguage('ro', event)">RO</button>
-                    <button class="lang-btn" onclick="setLanguage('ru', event)">RU</button>
+                    <button class="lang-btn active" data-lang="ro" onclick="setLanguage('ro')">RO</button>
+                    <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
                 </div>
                 <a href="#contact" class="btn">
                     <span lang="ro">Cere Ofertă</span>
@@ -488,7 +488,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 lang="ro">Complexe Industriale de Curățare și Calibrare Cereale ЗАВ</h1>
+            <h1 lang="ro">Complexe Industriale de Curățare și Calibrare Cereale</h1>
             <h1 lang="ru">Зерноочистительные Комплексы ЗАВ-25, ЗАВ-50, ЗАВ-100</h1>
             
             <p lang="ro">Performanță înaltă, eficiență energetică și puritate maximă pentru recolta ta cu liniile ZAV-25, ZAV-50 și ZAV-100 de la ZICOM-TEH SRL.</p>
@@ -793,12 +793,12 @@
             ru: 'ZICOM-TEH SRL - Зерноочистительные Комплексы'
         };
 
-        function setLanguage(lang, languageEvent) {
+        function setLanguage(lang) {
             currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.documentElement.lang = lang;
             document.title = pageTitles[lang];
-            languageEvent.currentTarget.classList.add('active');
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
             
             if (lang === 'ru') {
                 document.body.classList.add('lang-ru');
